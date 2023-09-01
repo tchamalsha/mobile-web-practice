@@ -8,8 +8,8 @@ export const appRoutes: Route[] = [
         component:LoginComponent
     },
     {
-        path:'/admin',
+        path:'admin',
         loadComponent:()=> 
-        import('./pages/admin/admin.component').then((c) => c.AdminComponent),
-    }
+        import('./pages/admin/admin.component').then((c) => c.AdminComponent)
+    },
 ];
