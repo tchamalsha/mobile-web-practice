@@ -1,13 +1,22 @@
-<form class="login-form" [formGroup] = "formGroup">
+<form class="login-form" [formGroup] = "loginFormGroup">
     <h2>Login</h2>
     <mat-form-field class="example-full-width" appearance="outline">
         <mat-label>Username</mat-label>
-        <input matInput >
+        <input matInput [formControl]="emailCTRL">
+        <mat-error *ngIf="emailCTRL.hasError('email')">
+            Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailCTRL.hasError('required')">
+            Email is <strong>required</strong>
+        </mat-error>
     </mat-form-field>
     <mat-form-field class="example-full-width" appearance="outline">
         <mat-label>Password</mat-label>
-        <input type="password" matInput >
+        <input type="password" matInput [formControl]="passwordCTRL">
+        <mat-error *ngIf="passwordCTRL.hasError('required')">
+            Password is <strong>required</strong>
+        </mat-error>
     </mat-form-field>
-    <button mat-flat-button color="primary" (click)="onLogin()">Login</button>
+    <button mat-flat-button color="primary" [disabled] = "!loginFormGroup.valid" (click)="onLogin()">Login</button>
 </form>
 
