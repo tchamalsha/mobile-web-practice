@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AppService } from '../../../services/app/app.service';
 import { MatButtonModule } from '@angular/material/button';
 import { Store } from '@ngxs/store';
-import { ShowLoading } from '../../../state/app/app.actions';
+import { ChangeEmail, ShowLoading } from '../../../state/app/app.actions';
 
 @Component({
   selector: 'seng41293-admin-grn',
@@ -17,7 +17,10 @@ export class AdminGrnComponent {
     @Output() update  = new EventEmitter<string>; 
    
   constructor(private store:Store){} 
-  toggle(){
+  toggleLoading(){
     this.store.dispatch(new ShowLoading(true));
+  }
+  toggleEmail(){
+    this.store.dispatch(new ChangeEmail('thrishi@gmail.com'))
   }
 }

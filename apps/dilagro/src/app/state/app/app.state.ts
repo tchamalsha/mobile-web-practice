@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { ShowLoading } from './app.actions';
+import { ChangeEmail, ShowLoading } from './app.actions';
 
 export interface AppStateModel{
     loading: boolean, 
@@ -21,11 +21,20 @@ export class AppState {
     @Selector() static email(state:AppStateModel){
         return state.email
     }
+
     @Action(ShowLoading)
     showLoading(
         {patchState}:StateContext<AppStateModel>,
         {loading}:ShowLoading
     ){
         return patchState({loading});
+    }
+
+     @Action(ChangeEmail)
+    changeEmail(
+        {patchState}:StateContext<AppStateModel>,
+        {email}:ChangeEmail
+    ){
+        return patchState({email});
     }
 } 
