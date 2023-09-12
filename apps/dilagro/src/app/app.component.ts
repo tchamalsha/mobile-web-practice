@@ -5,6 +5,9 @@ import { LoginComponent } from './pages/login/login.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { AppService } from './services/app/app.service';
+import { Observable } from 'rxjs';
+import { AppState } from './state/app/app.state';
+import { Store } from '@ngxs/store';
 
 
 @Component({
@@ -16,6 +19,12 @@ import { AppService } from './services/app/app.service';
 })
 export class AppComponent {
   
-  constructor(protected appService:AppService){}
+  email$:Observable<string>;
+  loading$:Observable<boolean>;
+  constructor(private store:Store){
+    this.email$ = this.store.select(AppState.email)
+    this.loading$=this.store.select(AppState.loading)
+  }
+  
 
 }

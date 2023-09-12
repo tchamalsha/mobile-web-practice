@@ -4,7 +4,7 @@ import { ShowLoading } from './app.actions';
 
 export interface AppStateModel{
     loading: boolean, 
-    email? : string,
+    email : string,
     token?: string
 }
 @State<AppStateModel>({
@@ -13,8 +13,13 @@ export interface AppStateModel{
 })
 @Injectable({providedIn:'root'})
 export class AppState {
+
     @Selector() static loading(state:AppStateModel){
         return state.loading
+    }
+
+    @Selector() static email(state:AppStateModel){
+        return state.email
     }
     @Action(ShowLoading)
     showLoading(

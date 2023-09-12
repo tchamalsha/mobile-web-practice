@@ -1,4 +1,4 @@
-<mat-toolbar>Email </mat-toolbar>
-<mat-progress-bar *ngIf="appService.loading" mode="indeterminate" value="40"></mat-progress-bar>
+<mat-toolbar>{{email$ | async}}</mat-toolbar>
+<mat-progress-bar *ngIf="loading$ | async"  mode="indeterminate" value="40"></mat-progress-bar>
 
 <router-outlet></router-outlet>
